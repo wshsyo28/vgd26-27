@@ -6,15 +6,19 @@ public class minesweeper : MonoBehaviour
   [SerializedField] private int extra;
   [SerializedField] private int tiles;
   [SerializedField] private int mines;
-
+  private int rows;
+  private int columns;
+  private int fairness;
+  
   public bool mineSquare;
-  public int mineRows;
-  public int mineColumns;
-  public int mineFairness;
 
   private scripObj vardata;
   
   void Start(){
+
+    rows = scripObj.MineSweeperRows;
+    columns = scripObj.MineSweeperColumns;
+    fairness = scripObj.MineSweeperFairness;
 
     if(mineRows == 0 || null){
       mineRows = 14;
@@ -24,7 +28,9 @@ public class minesweeper : MonoBehaviour
     }
     
     tiles = (mineRows*extra)*(mineColumns*extra);
-    mines = tiles/mineFairness - extra*mineFairness;
+    mines = tiles/fairness - extra*fairness;
+
+    
   }
 
   void Update(){
