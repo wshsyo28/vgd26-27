@@ -9,6 +9,8 @@ public class player : MonoBehaviour
     [SerializedField] private int intel;
     [SerializedField] private int hunger;
 
+    [SerializedField] private int speed;
+
     private int hp;
 
     private ScripObj vardata;
@@ -22,12 +24,16 @@ public class player : MonoBehaviour
         intel = vardata.PlayerIntelligence;
         hunger = vardata.PlayerHunger;
 
+        speed = vardata.PlayerMaxSpeed;
+
         hp = basehp;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         
     }
 }
