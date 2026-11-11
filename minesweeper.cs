@@ -3,7 +3,6 @@ using UnityEngine;
 public class minesweeper : MonoBehaviour
 {
 
-  [SerializedField] private int extra;
   [SerializedField] private int tiles;
   [SerializedField] private int mines;
   private int rows;
@@ -13,12 +12,14 @@ public class minesweeper : MonoBehaviour
   public bool mineSquare;
 
   private scripObj vardata;
+  private int[] board;
   
   void Start(){
 
-    rows = scripObj.MineSweeperRows;
-    columns = scripObj.MineSweeperColumns;
-    fairness = scripObj.MineSweeperFairness;
+    rows = vardata.MineSweeperRows;
+    columns = vardata.MineSweeperColumns;
+    fairness = vardata.MineSweeperFairness;
+    board = vardata.MineSweeperMatrix;
 
     if(mineRows == 0 || null){
       mineRows = 14;
@@ -27,14 +28,25 @@ public class minesweeper : MonoBehaviour
       mineColumns = mineRows;
     }
     
-    tiles = (mineRows*extra)*(mineColumns*extra);
-    mines = tiles/fairness - extra*fairness;
+    tiles = mineRows*mineColumns;
+    mines = tiles/fairness;
 
     
   }
 
   void Update(){
     
+  }
+
+  private void BoardGen()
+  {
+    for (x = 0; x < rows; x++)
+    {
+      for (y = 0; y < columns; y++)
+      {
+        board[x,y] = 0;
+      }
+    }
   }
   
 }
